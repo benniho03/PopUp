@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
+    public float movementSpeed = 1;
+    public Collider2D otherCollider;
     ForceMode2D m_ForceMode;
     Vector2 m_NewForce;
     Rigidbody2D rb;
@@ -12,21 +15,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetButtonDown("Jump")){
-            m_NewForce = new Vector2(0, 10.0f);
-            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
-        }
-        if(Input.GetKeyDown(KeyCode.A)){
-            m_NewForce = new Vector2(-3.0f, 0);
-            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
-        }
-        if(Input.GetKeyDown(KeyCode.D)){
-            m_NewForce = new Vector2(3.0f, 0);
-            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
-        }
+        var movement = Input.GetAxis("Horizontal");
+        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * movementSpeed;
     }
     private void OnCollisionEnter2D(Collision2D other) {
-            m_NewForce = new Vector2(0, 5.0f);
-            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
+        m_NewForce = new Vector2(0, 12.0f);
+        rb.AddForce(m_NewForce, ForceMode2D.Impulse);
     }
 }
