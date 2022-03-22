@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  otherCollider: {fileID: 0}
 --- !u!212 &2087850861
 SpriteRenderer:
   m_ObjectHideFlags: 0
