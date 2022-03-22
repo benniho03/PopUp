@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f5350e73f0d6b4e830ae1d01fdffcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeft: 0
   otherCollider: {fileID: 1952972008}
 --- !u!61 &229505456
 BoxCollider2D:

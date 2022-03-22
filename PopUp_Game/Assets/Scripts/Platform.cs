@@ -28,6 +28,5 @@ public class Platform : MonoBehaviour
             m_NewForce = new Vector2(-2f, 0);
         }
         rb.AddForce(m_NewForce, ForceMode2D.Impulse);
-
     }
 }
