@@ -7,12 +7,13 @@ public class Platform : MonoBehaviour
 
     // Start is called before the first frame update
     public bool isLeft;
-    public Collider2D otherCollider;
+    
     Rigidbody2D rb;
     Vector2 m_NewForce;
     void Start()
     {
-        rb = otherCollider.GetComponent<Rigidbody2D>();
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        rb = Player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
