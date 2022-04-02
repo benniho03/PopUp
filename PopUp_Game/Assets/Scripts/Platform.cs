@@ -6,10 +6,11 @@ public class Platform : MonoBehaviour
 {
 
     // Start is called before the first frame update
-    public bool isLeft;
+    [SerializeField]
+    public string type = "cannon";
     
     Rigidbody2D rb;
-    Vector2 m_NewForce;
+    Vector2 direction;
     void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
@@ -23,11 +24,29 @@ public class Platform : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(isLeft){
-            m_NewForce = new Vector2(2f, 0);
-        } else {
-            m_NewForce = new Vector2(-2f, 0);
+        switch(type){
+            case "normal":
+                direction = new Vector2(0f, 0);
+                break;
+            case "left":
+                direction = new Vector2(-2f, 0);
+                break;
+            case "right":
+                direction = new Vector2(2f, 0);
+                break;
+            case "cannon":
+                direction = new Vector2(0f, 50f);
+                break;
+            default:
+                direction = new Vector2(0f, 0);
+                break;
         }
-        rb.AddForce(m_NewForce, ForceMode2D.Impulse);
+        
+        // if(type == "left"){
+        //     m_NewForce = new Vector2(2f, 0);
+        // } else {
+        //     m_NewForce = new Vector2(-2f, 0);
+        // }
+        rb.AddForce(direction, ForceMode2D.Impulse);
     }
 }
