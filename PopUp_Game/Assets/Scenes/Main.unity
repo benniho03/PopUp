@@ -476,7 +476,7 @@ Camera:
   far clip plane: 1000
   field of view: 26.991467
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20.086182
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 1643498796}
   - component: {fileID: 1643498795}
   - component: {fileID: 1643498797}
+  - component: {fileID: 1643498798}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -801,7 +802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  screenBounds: {fileID: 0}
 --- !u!61 &1955049741
 BoxCollider2D:
   m_ObjectHideFlags: 0
