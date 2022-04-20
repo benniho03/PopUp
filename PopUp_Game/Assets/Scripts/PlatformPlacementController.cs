@@ -17,6 +17,12 @@ public class PlatformPlacementController : MonoBehaviour
         MoveCurrentPlatformToMouse();
     }
 
+    private void HandleNewObjectHotkey()
+    {
+        if(Input.GetKeyDown(newObjectHotkey)){
+            currentPlatform = Instantiate(PlatformPrefab);
+        }
+    }
     private void MoveCurrentPlatformToMouse()
     {  
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -26,10 +32,4 @@ public class PlatformPlacementController : MonoBehaviour
         }
     }
 
-    private void HandleNewObjectHotkey()
-    {
-        if(Input.GetKeyDown(newObjectHotkey)){
-            currentPlatform = Instantiate(PlatformPrefab);
-        }
-    }
 }

@@ -26,7 +26,7 @@ public class Platform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         switch(type){
             case "normal":
-                direction = new Vector2(0f, 0);
+                direction = new Vector2(0f, 18f);
                 break;
             case "left":
                 direction = new Vector2(-2f, 0);
