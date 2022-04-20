@@ -11,6 +11,7 @@ public class Platform : MonoBehaviour
     
     Rigidbody2D rb;
     Vector2 direction;
+    int bounceCount = 0;
     void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
@@ -26,7 +27,7 @@ public class Platform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         switch(type){
             case "normal":
-                direction = new Vector2(0f, 18f);
+                direction = new Vector2(0f, 13f);
                 break;
             case "left":
                 direction = new Vector2(-2f, 0);
@@ -37,16 +38,21 @@ public class Platform : MonoBehaviour
             case "cannon":
                 direction = new Vector2(0f, 50f);
                 break;
+            case "invincible":
+                direction = new Vector2(0f, 10f);
+                rb.AddForce(direction, ForceMode2D.Impulse);
+                return;
             default:
                 direction = new Vector2(0f, 0);
                 break;
         }
-        
-        // if(type == "left"){
-        //     m_NewForce = new Vector2(2f, 0);
-        // } else {
-        //     m_NewForce = new Vector2(-2f, 0);
-        // }
         rb.AddForce(direction, ForceMode2D.Impulse);
+
+        bounceCount += 1;
+        Debug.Log(bounceCount);
+
+        if(bounceCount >= 2){
+            Destroy(gameObject);
+        }
     }
 }

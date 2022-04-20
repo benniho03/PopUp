@@ -29,6 +29,7 @@ public class ScreenBounds : MonoBehaviour
         Vector2 reflectedVelocity;
 
         if(isLeftWall){
+            Debug.Log(playerVelocity);
             reflectedVelocity = new Vector2 ((playerVelocity.x + 10), playerVelocity.y);
         }else{
             reflectedVelocity = new Vector2 ((playerVelocity.x - 10), playerVelocity.y);
@@ -36,7 +37,7 @@ public class ScreenBounds : MonoBehaviour
 
         Debug.Log(reflectedVelocity);
         
-        otherRb.velocity += reflectedVelocity;
+        otherRb.velocity = reflectedVelocity;
     }
 
 }

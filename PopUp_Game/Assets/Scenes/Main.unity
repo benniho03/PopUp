@@ -211,6 +211,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &342883259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1795676421169657953, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
+  m_PrefabInstance: {fileID: 1795676419899855287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &802155353
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f5350e73f0d6b4e830ae1d01fdffcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: normal
+  type: invincible
 --- !u!1 &1955049739
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768ca2de1e58df84abba231da765e188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlatformPrefab: {fileID: 1795676421169657953, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
+  PlatformPrefab: {fileID: 342883259}
   newObjectHotkey: 323
 --- !u!1 &2106203476
 GameObject:
@@ -1050,7 +1055,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1795676421169657952, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
       propertyPath: type
-      value: 
+      value: normal
       objectReference: {fileID: 0}
     - target: {fileID: 1795676421169657952, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
       propertyPath: otherCollider
@@ -1070,7 +1075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795676421169657965, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4
+      value: -17.18
       objectReference: {fileID: 0}
     - target: {fileID: 1795676421169657965, guid: 7f34aff2a5691234d8cc34eee29f391a, type: 3}
       propertyPath: m_LocalPosition.z
