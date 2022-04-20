@@ -26,7 +26,7 @@ public class Platform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         switch(type){
             case "normal":
-                direction = new Vector2(0f, 0);
+                direction = new Vector2(0f, 10f);
                 break;
             case "left":
                 direction = new Vector2(-2f, 0);
@@ -41,12 +41,6 @@ public class Platform : MonoBehaviour
                 direction = new Vector2(0f, 0);
                 break;
         }
-        
-        // if(type == "left"){
-        //     m_NewForce = new Vector2(2f, 0);
-        // } else {
-        //     m_NewForce = new Vector2(-2f, 0);
-        // }
         rb.AddForce(direction, ForceMode2D.Impulse);
     }
 }
