@@ -48,12 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Deathscreen
-    uniqueID: 989673219
+  - name: deathScreen
+    uniqueID: 3004820027
     locked: 0
-  - name: Selectcharacterscreen
-    uniqueID: 262611183
+  - name: selectCharacterScreen
+    uniqueID: 3323115523
     locked: 0
-  - name: Startscreen
-    uniqueID: 4157998551
+  - name: startScreen
+    uniqueID: 2212176935
     locked: 0
