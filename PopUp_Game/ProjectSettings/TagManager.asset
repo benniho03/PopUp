@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: DeathScreen
+  - name: Deathscreen
     uniqueID: 989673219
+    locked: 0
+  - name: Startscreen
+    uniqueID: 4157998551
     locked: 0
