@@ -51,6 +51,9 @@ TagManager:
   - name: Deathscreen
     uniqueID: 989673219
     locked: 0
+  - name: Selectcharacterscreen
+    uniqueID: 262611183
+    locked: 0
   - name: Startscreen
     uniqueID: 4157998551
     locked: 0
