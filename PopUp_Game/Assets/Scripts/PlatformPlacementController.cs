@@ -43,20 +43,25 @@ public class PlatformPlacementController : MonoBehaviour
     private GameObject getRandomPlatformType()
     {
         switch(getRandomNumber()){
-            case 1:
+            case 0:
             PlatformPrefab = GameObject.Find("platform");
+            Debug.Log(PlatformPrefab);
+            break;
+            case 1:
+            PlatformPrefab = GameObject.Find("platformLeft");
+            Debug.Log(PlatformPrefab);
             break;
             case 2:
-            PlatformPrefab = GameObject.Find("platformLeft");
+            PlatformPrefab = GameObject.Find("platformRight");
+            Debug.Log(PlatformPrefab);
             break;
             case 3:
-            PlatformPrefab = GameObject.Find("platformRight");
+            PlatformPrefab = GameObject.Find("platformCannon");
+            Debug.Log(PlatformPrefab);
             break;
             case 4:
-            PlatformPrefab = GameObject.Find("platformCannon");
-            break;
-            case 5:
             PlatformPrefab = GameObject.Find("platformFeather");
+            Debug.Log(PlatformPrefab);
             break;
         }
         return PlatformPrefab;
@@ -68,7 +73,10 @@ public class PlatformPlacementController : MonoBehaviour
     } 
 
     private int getRandomNumber(){
-        int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
+        // int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
+        // Debug.Log(randomInt);
+        System.Random rnd = new System.Random();
+        int randomInt  = rnd.Next(0 , 6 );
         Debug.Log(randomInt);
         return randomInt;
     }

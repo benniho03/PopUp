@@ -18,7 +18,7 @@ public class Platform : MonoBehaviour
         rb = Player.GetComponent<Rigidbody2D>();
 
         GameObject PlatformPlacer = GameObject.FindWithTag("GameController");
-        Debug.Log(PlatformPlacer);
+        // Debug.Log(PlatformPlacer);
 
         // gameControllerScript = PlatformPlacer.GetComponent<PlatformPlacementController>();
     }
@@ -57,14 +57,10 @@ public class Platform : MonoBehaviour
         rb.AddForce(direction, ForceMode2D.Impulse);
 
         bounceCount += 1;
-        Debug.Log(bounceCount);
+        // Debug.Log(bounceCount);
 
         if(bounceCount >= 2){
             Destroy(gameObject);
         }
-    }
-
-    public void setPlatformType(string newPlatformtype){
-        type = newPlatformtype;
     }
 }
