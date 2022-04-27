@@ -40,6 +40,9 @@ public class Platform : MonoBehaviour
             case "right":
                 direction = new Vector2(4f, 13f);
                 break;
+            case "feather":
+                direction = new Vector2(0, 25f);
+                break;
             case "cannon":
                 direction = new Vector2(0f, 50f);
                 break;

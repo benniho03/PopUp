@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlatformPlacementController : MonoBehaviour
 {
     [SerializeField]
+    GameObject[] PlatformArray = new GameObject[5];
+    // public Array PlatformArray = new Array [4];
     private GameObject PlatformPrefab;
 
     [SerializeField]
@@ -25,6 +27,9 @@ public class PlatformPlacementController : MonoBehaviour
     {
         if (Input.GetKeyDown(newObjectHotkey))
         {
+
+            getRandomPlatformType();
+
             currentPlatform = Instantiate(PlatformPrefab);
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPosition.z = 0f;
@@ -34,10 +39,38 @@ public class PlatformPlacementController : MonoBehaviour
             }
         }
     }
-     
+
+    private GameObject getRandomPlatformType()
+    {
+        switch(getRandomNumber()){
+            case 1:
+            PlatformPrefab = GameObject.Find("platform");
+            break;
+            case 2:
+            PlatformPrefab = GameObject.Find("platformLeft");
+            break;
+            case 3:
+            PlatformPrefab = GameObject.Find("platformRight");
+            break;
+            case 4:
+            PlatformPrefab = GameObject.Find("platformCannon");
+            break;
+            case 5:
+            PlatformPrefab = GameObject.Find("platformFeather");
+            break;
+        }
+        return PlatformPrefab;
+    }
+
     private void changePlatformType(String platformType){
         // PlatformPrefab.setPlatformType("");
         // Debug.Log(PlatformPrefab.gameObject);
     } 
+
+    private int getRandomNumber(){
+        int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
+        Debug.Log(randomInt);
+        return randomInt;
+    }
 
 }
