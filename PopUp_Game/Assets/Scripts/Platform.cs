@@ -40,8 +40,17 @@ public class Platform : MonoBehaviour
             case "right":
                 direction = new Vector2(4f, 13f);
                 break;
+            case "slime":
+                direction = getRandomSlimeDirection();
+                break;
             case "feather":
                 direction = new Vector2(0, 25f);
+                break;
+            case "featherLeft":
+                direction = new Vector2(-4f, 25f);
+                break;
+            case "featherRight":
+                direction = new Vector2(4f, 25f);
                 break;
             case "cannon":
                 direction = new Vector2(0f, 50f);
@@ -62,5 +71,17 @@ public class Platform : MonoBehaviour
         if(bounceCount >= 2){
             Destroy(gameObject);
         }
+    }
+
+    private Vector2 getRandomSlimeDirection() {
+        System.Random rnd = new System.Random();
+        int randomInt  = rnd.Next(0, 2);
+        Debug.Log(randomInt);
+        if (randomInt == 0) {
+            direction = new Vector2(-8f, 5f);
+        } else {
+            direction = new Vector2(8f, 5f);
+        }
+        return direction;
     }
 }
