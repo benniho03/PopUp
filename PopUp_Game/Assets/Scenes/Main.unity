@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 1962840386}
   m_Layer: 0
   m_Name: PlatformPlacer
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlatformPrefab: {fileID: 342883259}
   newObjectHotkey: 323
+  currentPlatform: {fileID: 0}
 --- !u!1 &2106203476
 GameObject:
   m_ObjectHideFlags: 0

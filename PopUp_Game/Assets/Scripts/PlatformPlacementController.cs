@@ -10,11 +10,15 @@ public class PlatformPlacementController : MonoBehaviour
 
     [SerializeField]
     private KeyCode newObjectHotkey = KeyCode.Mouse0;
+    [SerializeField]
+    
     private GameObject currentPlatform;
+    
+
     private void Update()
     {
+        changePlatformType("type");
         HandleNewObjectHotkey();
-        // MoveCurrentPlatformToMouse();
     }
 
     private void HandleNewObjectHotkey()
@@ -30,6 +34,10 @@ public class PlatformPlacementController : MonoBehaviour
             }
         }
     }
-    
+     
+    private void changePlatformType(String platformType){
+        // PlatformPrefab.setPlatformType("");
+        // Debug.Log(PlatformPrefab.gameObject);
+    } 
 
 }

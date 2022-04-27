@@ -16,6 +16,11 @@ public class Platform : MonoBehaviour
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         rb = Player.GetComponent<Rigidbody2D>();
+
+        GameObject PlatformPlacer = GameObject.FindWithTag("GameController");
+        Debug.Log(PlatformPlacer);
+
+        // gameControllerScript = PlatformPlacer.GetComponent<PlatformPlacementController>();
     }
 
     // Update is called once per frame
@@ -30,10 +35,10 @@ public class Platform : MonoBehaviour
                 direction = new Vector2(0f, 13f);
                 break;
             case "left":
-                direction = new Vector2(-2f, 0);
+                direction = new Vector2(-4f, 13f);
                 break;
             case "right":
-                direction = new Vector2(2f, 0);
+                direction = new Vector2(4f, 13f);
                 break;
             case "cannon":
                 direction = new Vector2(0f, 50f);
@@ -54,5 +59,9 @@ public class Platform : MonoBehaviour
         if(bounceCount >= 2){
             Destroy(gameObject);
         }
+    }
+
+    public void setPlatformType(string newPlatformtype){
+        type = newPlatformtype;
     }
 }
