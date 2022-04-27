@@ -18,9 +18,6 @@ public class Platform : MonoBehaviour
         rb = Player.GetComponent<Rigidbody2D>();
 
         GameObject PlatformPlacer = GameObject.FindWithTag("GameController");
-        // Debug.Log(PlatformPlacer);
-
-        // gameControllerScript = PlatformPlacer.GetComponent<PlatformPlacementController>();
     }
 
     // Update is called once per frame
@@ -66,7 +63,6 @@ public class Platform : MonoBehaviour
         rb.AddForce(direction, ForceMode2D.Impulse);
 
         bounceCount += 1;
-        // Debug.Log(bounceCount);
 
         if(bounceCount >= 2){
             Destroy(gameObject);
@@ -76,7 +72,6 @@ public class Platform : MonoBehaviour
     private Vector2 getRandomSlimeDirection() {
         System.Random rnd = new System.Random();
         int randomInt  = rnd.Next(0, 2);
-        Debug.Log(randomInt);
         if (randomInt == 0) {
             direction = new Vector2(-8f, 5f);
         } else {
