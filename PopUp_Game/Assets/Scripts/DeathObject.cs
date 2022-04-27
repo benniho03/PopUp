@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class DeathObject : MonoBehaviour
 {
-private Transform playerTransform;
-private Transform deathTesterTransform;
+    private GameObject deathTester;
 
-private GameObject player;
+    private GameObject player;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        deathTesterTransform = GameObject.Find("deathTester").transform;
+        deathTester = GameObject.Find("deathTester");
     }
     void LateUpdate()
-    {  
+    {
         Vector3 playerTemp = player.transform.position;
         Vector3 deathTesterTransform = transform.position;
-        Debug.Log(playerTemp);
 
-        if (playerTemp.y > deathTesterTransform.y + 20) {
-            Vector3 tempDeathTester = transform.position;
-            tempDeathTester.y += playerTemp.y - deathTesterTransform.y;
-            Debug.Log(tempDeathTester);
+        if (playerTemp.y > (deathTesterTransform.y + 20f))
+        {
+            deathTester.transform.position = new Vector3(0, (playerTemp.y - 20f), 0);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        //Deathscreen einblenden
     }
 }
