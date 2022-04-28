@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class DeathObject : MonoBehaviour
 {
+    public GameObject deathScreen;
     private GameObject deathTester;
 
     private GameObject player;
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,6 +28,8 @@ public class DeathObject : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        deathScreen.SetActive(true);
+        // deathScreen.GetComponent<Canvas> ().enabled = true;
         //Deathscreen einblenden
     }
 }
