@@ -20,16 +20,9 @@ public class DeathObject : MonoBehaviour
     {
         Vector3 playerTemp = player.transform.position;
         Vector3 deathTesterTransform = transform.position;
-
-        if (playerTemp.y > (deathTesterTransform.y + 20f))
-        {
-            deathTester.transform.position = new Vector3(0, (playerTemp.y - 20f), 0);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         deathScreen.SetActive(true);
-        // deathScreen.GetComponent<Canvas> ().enabled = true;
-        //Deathscreen einblenden
     }
 }
