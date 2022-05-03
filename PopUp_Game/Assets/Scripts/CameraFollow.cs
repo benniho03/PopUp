@@ -6,29 +6,32 @@ public class CameraFollow : MonoBehaviour
 {
     private GameObject cam;
     private Transform playerTransform;
-
     private GameObject deathTester;
+    private Vector3 playerVelocity;
+    private Rigidbody2D rb;
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         deathTester = GameObject.Find("deathTester");
 
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+
     }
-    void LateUpdate()
+    void Update()
     {
-        Vector3 playerTemp = playerTransform.position;
-        Vector3 cameraTemp = cam.transform.position;
-        Vector3 deathTesterTransform = deathTester.transform.position;
+
+        playerVelocity = rb.velocity;
 
 
-        
 
-        if (playerTemp.y >= (deathTesterTransform.y + 20f))
-        {
-            cameraTemp.y = playerTransform.position.y;
-            cam.transform.position = cameraTemp;
-        }
+            Vector3 temp = transform.position;
+
+            temp.y = playerTransform.position.y;
+
+            transform.position = temp;
+
 
     }
 }
