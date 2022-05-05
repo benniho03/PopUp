@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float offsetX;
-    public float offsetY;
+    private GameObject cam;
     private Transform playerTransform;
+    private GameObject deathTester;
+    private Vector3 playerVelocity;
+    private Rigidbody2D rb;
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-    void LateUpdate()
-    {
-        Vector3 temp = transform.position;
+        deathTester = GameObject.Find("deathTester");
 
-        temp.y = playerTransform.position.y + offsetY;
-        
-        transform.position = temp;
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+
+    }
+    void Update()
+    {
+
+        playerVelocity = rb.velocity;
+
+
+
+            Vector3 temp = transform.position;
+
+            temp.y = playerTransform.position.y;
+
+            transform.position = temp;
+
+
     }
 }
