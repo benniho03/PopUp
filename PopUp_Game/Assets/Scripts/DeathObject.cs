@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathObject : MonoBehaviour
 {
-    public GameObject deathScreen;
 
     private GameObject player;
     private GameObject cam;
@@ -22,6 +22,6 @@ public class DeathObject : MonoBehaviour
         transform.position = deathpos.position;
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        deathScreen.SetActive(true);
+        SceneManager.LoadScene(sceneName:"deathScreen");
     }
 }
