@@ -14,4 +14,7 @@ public class ButtonNavigation : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName:"Main");
     }
+    public void changeToSelectCharacterScreen(){
+        SceneManager.LoadScene(sceneName:"selectCharacterScreen");
+    }
 }
