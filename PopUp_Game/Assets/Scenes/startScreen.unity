@@ -321,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 262445583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ea781aa2a5f714a9055ff9d689c8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 61d88cfeffa4f304788625289b43eec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &262445586
@@ -369,7 +369,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 262445585}
-        m_TargetAssemblyTypeName: startGameButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: ButtonNavigation, Assembly-CSharp
         m_MethodName: changeToGameScreen
         m_Mode: 1
         m_Arguments:

@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class startGameButton : MonoBehaviour
+public class ButtonNavigation : MonoBehaviour
 {
+    public void changeToStartScreen()
+    {
+        SceneManager.LoadScene(sceneName:"startScreen");
+    }
     public void changeToGameScreen()
     {
         SceneManager.LoadScene(sceneName:"Main");
