@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public float smoothSpeed;
     private GameObject cam;
     private Transform playerTransform;
     private GameObject deathTester;
@@ -19,18 +20,26 @@ public class CameraFollow : MonoBehaviour
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 
     }
-    void Update()
+    void FixedUpdate()
     {
 
-        playerVelocity = rb.velocity;
+        // playerVelocity = rb.velocity;
+        // Vector3 temp = transform.position;
+        // temp.y = playerTransform.position.y;
+        // transform.position = temp;
 
+        Vector3 desiredPosition = playerTransform.position;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
+        // transform.position = smoothedPosition;
 
-            Vector3 temp = transform.position;
+        if(rb.velocity.y > 1){
 
-            temp.y = playerTransform.position.y;
+            float smoothedPositionY = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed).y;
 
-            transform.position = temp;
+            transform.position = new Vector3(transform.position.x, smoothedPositionY, transform.position.z);
+        }
+
 
 
     }
