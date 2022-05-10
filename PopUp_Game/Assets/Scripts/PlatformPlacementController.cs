@@ -7,6 +7,7 @@ public class PlatformPlacementController : MonoBehaviour
 {
     [SerializeField]
     GameObject[] PlatformArray = new GameObject[5];
+    List<GameObject> NextPlatformsArray = new List<GameObject>();
     // public Array PlatformArray = new Array [4];
     private GameObject PlatformPrefab;
 
@@ -16,6 +17,11 @@ public class PlatformPlacementController : MonoBehaviour
     
     private GameObject currentPlatform;
     
+    private void Start() {
+        NextPlatformsArray.Add(GameObject.Find("platform"));
+        NextPlatformsArray.Add(getRandomPlatformType());
+        NextPlatformsArray.Add(getRandomPlatformType());
+    }
 
     private void Update()
     {
@@ -27,8 +33,15 @@ public class PlatformPlacementController : MonoBehaviour
     {
         if (Input.GetKeyDown(newObjectHotkey))
         {
-
-            getRandomPlatformType();
+            
+            PlatformPrefab = NextPlatformsArray[0];
+            NextPlatformsArray.RemoveAt(0);
+            if (NextPlatformsArray.Count == 2) {
+                NextPlatformsArray.Add(getRandomPlatformType());
+            }
+            Debug.Log(NextPlatformsArray[0]);
+            Debug.Log(NextPlatformsArray[1]);
+            Debug.Log(NextPlatformsArray[2]);
 
             currentPlatform = Instantiate(PlatformPrefab);
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -42,41 +55,27 @@ public class PlatformPlacementController : MonoBehaviour
 
     private GameObject getRandomPlatformType()
     {
+
         switch(getRandomNumber()){
             case 0:
-                PlatformPrefab = GameObject.Find("platform");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platform");
             case 1:
-                PlatformPrefab = GameObject.Find("platformLeft");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformLeft");
             case 2:
-                PlatformPrefab = GameObject.Find("platformRight");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformRight");
             case 3:
-                PlatformPrefab = GameObject.Find("platformSlime");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformSlime");
             case 4:
-                PlatformPrefab = GameObject.Find("platformFeather");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformFeather");
             case 5:
-                PlatformPrefab = GameObject.Find("platformFeatherLeft");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformFeatherLeft");
             case 6:
-                PlatformPrefab = GameObject.Find("platformFeatherRight");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformFeatherRight");
             case 7:
-                PlatformPrefab = GameObject.Find("platformCannon");
-                Debug.Log(PlatformPrefab);
-                break;
+                return GameObject.Find("platformCannon");
+            default:
+                return GameObject.Find("platform");
         }
-        return PlatformPrefab;
     }
 
     private void changePlatformType(String platformType){
@@ -92,4 +91,7 @@ public class PlatformPlacementController : MonoBehaviour
         return randomInt;
     }
 
+    // private void getNextPlatforms() {
+    //         NextPlatformsArray.Add(getRandomPlatformType());
+    // }
 }
