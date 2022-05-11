@@ -7,6 +7,7 @@ public class PlatformPlacementController : MonoBehaviour
 {
     [SerializeField]
     GameObject[] PlatformArray = new GameObject[5];
+    List<GameObject> NextPlatformsArray = new List<GameObject>();
     // public Array PlatformArray = new Array [4];
     private GameObject PlatformPrefab;
 
@@ -16,6 +17,11 @@ public class PlatformPlacementController : MonoBehaviour
     
     private GameObject currentPlatform;
     
+    private void Start() {
+        NextPlatformsArray.Add(GameObject.Find("platform"));
+        NextPlatformsArray.Add(getRandomPlatformType());
+        NextPlatformsArray.Add(getRandomPlatformType());
+    }
 
     private void Update()
     {
@@ -26,8 +32,15 @@ public class PlatformPlacementController : MonoBehaviour
     {
         if (Input.GetKeyDown(newObjectHotkey))
         {
-
-            getRandomPlatformType();
+            
+            PlatformPrefab = NextPlatformsArray[0];
+            NextPlatformsArray.RemoveAt(0);
+            if (NextPlatformsArray.Count == 2) {
+                NextPlatformsArray.Add(getRandomPlatformType());
+            }
+            Debug.Log(NextPlatformsArray[0]);
+            Debug.Log(NextPlatformsArray[1]);
+            Debug.Log(NextPlatformsArray[2]);
 
             currentPlatform = Instantiate(PlatformPrefab);
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -41,8 +54,10 @@ public class PlatformPlacementController : MonoBehaviour
 
     private GameObject getRandomPlatformType()
     {
+
         switch(getRandomNumber()){
             case 0:
+
                 PlatformPrefab = GameObject.Find("platform");
                 break;
             case 1:
@@ -67,7 +82,6 @@ public class PlatformPlacementController : MonoBehaviour
                 PlatformPrefab = GameObject.Find("platformCannon");
                 break;
         }
-        return PlatformPrefab;
     }
 
 
@@ -79,4 +93,7 @@ public class PlatformPlacementController : MonoBehaviour
         return randomInt;
     }
 
+    // private void getNextPlatforms() {
+    //         NextPlatformsArray.Add(getRandomPlatformType());
+    // }
 }

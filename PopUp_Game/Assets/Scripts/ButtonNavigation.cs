@@ -17,4 +17,7 @@ public class ButtonNavigation : MonoBehaviour
     public void changeToSelectCharacterScreen(){
         SceneManager.LoadScene(sceneName:"selectCharacterScreen");
     }
+    public void changeCharacterNr(int nr){
+        CharacterSpriteHandler.characterNr = nr;
+    }
 }
