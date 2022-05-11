@@ -25,7 +25,6 @@ public class PlatformPlacementController : MonoBehaviour
 
     private void Update()
     {
-        changePlatformType("type");
         HandleNewObjectHotkey();
     }
 
@@ -58,30 +57,33 @@ public class PlatformPlacementController : MonoBehaviour
 
         switch(getRandomNumber()){
             case 0:
-                return GameObject.Find("platform");
+
+                PlatformPrefab = GameObject.Find("platform");
+                break;
             case 1:
-                return GameObject.Find("platformLeft");
+                PlatformPrefab = GameObject.Find("platformLeft");
+                break;
             case 2:
-                return GameObject.Find("platformRight");
+                PlatformPrefab = GameObject.Find("platformRight");
+                break;
             case 3:
-                return GameObject.Find("platformSlime");
+                PlatformPrefab = GameObject.Find("platformSlime");
+                break;
             case 4:
-                return GameObject.Find("platformFeather");
+                PlatformPrefab = GameObject.Find("platformFeather");
+                break;
             case 5:
-                return GameObject.Find("platformFeatherLeft");
+                PlatformPrefab = GameObject.Find("platformFeatherLeft");
+                break;
             case 6:
-                return GameObject.Find("platformFeatherRight");
+                PlatformPrefab = GameObject.Find("platformFeatherRight");
+                break;
             case 7:
-                return GameObject.Find("platformCannon");
-            default:
-                return GameObject.Find("platform");
+                PlatformPrefab = GameObject.Find("platformCannon");
+                break;
         }
     }
 
-    private void changePlatformType(String platformType){
-        // PlatformPrefab.setPlatformType("");
-        // Debug.Log(PlatformPrefab.gameObject);
-    } 
 
     private int getRandomNumber(){
         // int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
