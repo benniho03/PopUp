@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DeathObject : MonoBehaviour
 {
-
+    public static int scoreOnDeath;
     private GameObject player;
     private GameObject cam;
     private Transform deathpos;
@@ -23,5 +23,10 @@ public class DeathObject : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         SceneManager.LoadScene(sceneName:"deathScreen");
+        Score.setHighscore();
+        scoreOnDeath = Score.getScoreOnDeath();
     }
+
 }
+
+

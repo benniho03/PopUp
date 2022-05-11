@@ -19,7 +19,6 @@ public class PlatformPlacementController : MonoBehaviour
 
     private void Update()
     {
-        changePlatformType("type");
         HandleNewObjectHotkey();
     }
 
@@ -45,44 +44,32 @@ public class PlatformPlacementController : MonoBehaviour
         switch(getRandomNumber()){
             case 0:
                 PlatformPrefab = GameObject.Find("platform");
-                Debug.Log(PlatformPrefab);
                 break;
             case 1:
                 PlatformPrefab = GameObject.Find("platformLeft");
-                Debug.Log(PlatformPrefab);
                 break;
             case 2:
                 PlatformPrefab = GameObject.Find("platformRight");
-                Debug.Log(PlatformPrefab);
                 break;
             case 3:
                 PlatformPrefab = GameObject.Find("platformSlime");
-                Debug.Log(PlatformPrefab);
                 break;
             case 4:
                 PlatformPrefab = GameObject.Find("platformFeather");
-                Debug.Log(PlatformPrefab);
                 break;
             case 5:
                 PlatformPrefab = GameObject.Find("platformFeatherLeft");
-                Debug.Log(PlatformPrefab);
                 break;
             case 6:
                 PlatformPrefab = GameObject.Find("platformFeatherRight");
-                Debug.Log(PlatformPrefab);
                 break;
             case 7:
                 PlatformPrefab = GameObject.Find("platformCannon");
-                Debug.Log(PlatformPrefab);
                 break;
         }
         return PlatformPrefab;
     }
 
-    private void changePlatformType(String platformType){
-        // PlatformPrefab.setPlatformType("");
-        // Debug.Log(PlatformPrefab.gameObject);
-    } 
 
     private int getRandomNumber(){
         // int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
