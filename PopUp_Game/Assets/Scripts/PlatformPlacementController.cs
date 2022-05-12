@@ -22,6 +22,8 @@ public class PlatformPlacementController : MonoBehaviour
     public Sprite platformFeatherRight;
     public Sprite platformCannon;
 
+    private float timeStamp;
+
 
     [SerializeField]
     GameObject[] PlatformArray = new GameObject[5];
@@ -43,6 +45,7 @@ public class PlatformPlacementController : MonoBehaviour
         prevs.Add(prev1);
         prevs.Add(prev2);
         buildPlatformPreview();
+        timeStamp = 0;
     }
 
     private void Update()
@@ -53,23 +56,31 @@ public class PlatformPlacementController : MonoBehaviour
 
     private void HandleNewObjectHotkey()
     {
+       
         if (Input.GetKeyDown(newObjectHotkey))
         {
-            
-            PlatformPrefab = NextPlatformsArray[0];
-            NextPlatformsArray.RemoveAt(0);
-            if (NextPlatformsArray.Count == 2) {
-                NextPlatformsArray.Add(getRandomPlatformType());
-            }            
-
-            buildPlatformPreview();
-
-            currentPlatform = Instantiate(PlatformPrefab);
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = 0f;
-            if (currentPlatform != null)
+            if(timeStamp <= Time.time)
             {
-                currentPlatform.transform.position = mouseWorldPosition;
+                timeStamp = Time.time + 1;
+                Debug.Log(timeStamp);
+                Debug.Log(Time.time);
+                
+                PlatformPrefab = NextPlatformsArray[0];
+                NextPlatformsArray.RemoveAt(0);
+                if (NextPlatformsArray.Count == 2) {
+                    NextPlatformsArray.Add(getRandomPlatformType());
+                }            
+
+                buildPlatformPreview();
+
+                currentPlatform = Instantiate(PlatformPrefab);
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouseWorldPosition.z = 0f;
+                if (currentPlatform != null)
+                {
+                    currentPlatform.transform.position = mouseWorldPosition;
+                }
+                
             }
         }
     }
@@ -111,10 +122,6 @@ public class PlatformPlacementController : MonoBehaviour
         int randomInt  = rnd.Next(0, 8);
         return randomInt;
     }
-
-    // private void getNextPlatforms() {
-    //         NextPlatformsArray.Add(getRandomPlatformType());
-    // }
 
     private void buildPlatformPreview(){
         for (int i = 0; i <= 2; i++)
