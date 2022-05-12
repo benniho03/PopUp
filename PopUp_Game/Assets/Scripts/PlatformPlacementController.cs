@@ -23,6 +23,7 @@ public class PlatformPlacementController : MonoBehaviour
     public Sprite platformCannon;
 
     private float timeStamp;
+    public float cooldownTime;
 
 
     [SerializeField]
@@ -46,6 +47,7 @@ public class PlatformPlacementController : MonoBehaviour
         prevs.Add(prev2);
         buildPlatformPreview();
         timeStamp = 0;
+        cooldownTime = 1;
     }
 
     private void Update()
@@ -61,7 +63,7 @@ public class PlatformPlacementController : MonoBehaviour
         {
             if(timeStamp <= Time.time)
             {
-                timeStamp = Time.time + 1;
+                timeStamp = Time.time + cooldownTime;
                 Debug.Log(timeStamp);
                 Debug.Log(Time.time);
                 
