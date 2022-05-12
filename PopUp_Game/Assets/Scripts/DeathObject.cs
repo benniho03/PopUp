@@ -22,6 +22,8 @@ public class DeathObject : MonoBehaviour
         transform.position = deathpos.position;
     }
     private void OnCollisionEnter2D(Collision2D other) {
+        Score.setHighscore(Score.getScore());
+        ScoreDeathScreen.playerScore = Score.getScore();
         SceneManager.LoadScene(sceneName:"deathScreen");
     }
 }
