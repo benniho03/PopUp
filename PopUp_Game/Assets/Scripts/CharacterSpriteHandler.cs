@@ -19,14 +19,14 @@ public class CharacterSpriteHandler : MonoBehaviour
                 Player.GetComponent<Rigidbody2D>().gravityScale = 1;
                 animator.SetBool("isSweetPopy", false);
                 animator.SetBool("isBabyPopy", true);
-                animator.SetBool("isGangstertPopy", false);
+                animator.SetBool("isGangsterPopy", false);
                 break;
             case 1:
                 Player.GetComponent<SpriteRenderer>().sprite = sweetPopy;
                 Player.GetComponent<Rigidbody2D>().gravityScale = 1.5f;
                 animator.SetBool("isSweetPopy", true);
                 animator.SetBool("isBabyPopy", false);
-                animator.SetBool("isGangstertPopy", false);
+                animator.SetBool("isGangsterPopy", false);
                 break;
             case 2:
                 Player.GetComponent<SpriteRenderer>().sprite = gangsterPopy;
