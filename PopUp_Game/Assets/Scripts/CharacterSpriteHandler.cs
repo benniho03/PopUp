@@ -11,22 +11,22 @@ public class CharacterSpriteHandler : MonoBehaviour
     public static int characterNr = 1;
     void Start()
     {
-        Debug.Log(characterNr);
         switch (characterNr)
         {
             case 0:
                 Player.GetComponent<SpriteRenderer>().sprite = babyPopy;
+                Player.GetComponent<Rigidbody2D>().gravityScale = 1;
                 break;
             case 1:
                 Player.GetComponent<SpriteRenderer>().sprite = sweetPopy;
+                Player.GetComponent<Rigidbody2D>().gravityScale = 1.5f;
                 break;
             case 2:
                 Player.GetComponent<SpriteRenderer>().sprite = gangsterPopy;
-                break;
-            default: 
-                Player.GetComponent<SpriteRenderer>().sprite = sweetPopy;
-                break;            
+                Player.GetComponent<Rigidbody2D>().gravityScale = 2;
+                break;          
         }
+
     }
 
     
