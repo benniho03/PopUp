@@ -10,8 +10,10 @@ public class CharacterSpriteHandler : MonoBehaviour
     public Sprite gangsterPopy;
     public static int characterNr = 1;
     public Animator animator;
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = Player.GetComponent<Rigidbody2D>();
         switch (characterNr)
         {
             case 0:
@@ -37,6 +39,22 @@ public class CharacterSpriteHandler : MonoBehaviour
                 break;          
         }
 
+    }
+
+    private void FixedUpdate() {
+        Debug.Log(rb.velocity.y);
+        animator.SetFloat("collision", rb.velocity.y);
+    }
+
+
+    public static void setBoolOnCollision(Animator animator, bool didJump) {
+        
+        if (didJump) {
+            animator.SetBool("collision", true);
+            Debug.Log("asdad");
+        } else {
+            animator.SetBool("collision", false);
+        }
     }
 
     

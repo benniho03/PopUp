@@ -68,7 +68,7 @@ public class Platform : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     private Vector2 getRandomSlimeDirection() {
         System.Random rnd = new System.Random();
         int randomInt  = rnd.Next(0, 2);
