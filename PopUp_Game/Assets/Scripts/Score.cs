@@ -14,18 +14,14 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-
-
         if(getScore() > 0){
             scoreText.text = getScore().ToString("0");
         }
-
     }
 
     public static int getScore()
     {
         return Mathf.FloorToInt(player.transform.position.y/10);
-
     }
 
     public static void setHighscore(int lastScore)

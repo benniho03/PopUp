@@ -9,6 +9,7 @@ public class CharacterSpriteHandler : MonoBehaviour
     public Sprite sweetPopy;
     public Sprite gangsterPopy;
     public static int characterNr = 1;
+    public float startGravity;
     public Animator animator;
     void Start()
     {
@@ -16,28 +17,34 @@ public class CharacterSpriteHandler : MonoBehaviour
         {
             case 0:
                 Player.GetComponent<SpriteRenderer>().sprite = babyPopy;
-                Player.GetComponent<Rigidbody2D>().gravityScale = 1;
+                startGravity = 1;
                 animator.SetBool("isSweetPopy", false);
                 animator.SetBool("isBabyPopy", true);
                 animator.SetBool("isGangsterPopy", false);
                 break;
             case 1:
                 Player.GetComponent<SpriteRenderer>().sprite = sweetPopy;
-                Player.GetComponent<Rigidbody2D>().gravityScale = 1.5f;
+                startGravity = 1.5f;
                 animator.SetBool("isSweetPopy", true);
                 animator.SetBool("isBabyPopy", false);
                 animator.SetBool("isGangsterPopy", false);
                 break;
             case 2:
                 Player.GetComponent<SpriteRenderer>().sprite = gangsterPopy;
-                Player.GetComponent<Rigidbody2D>().gravityScale = 2;
+                startGravity = 2;
                 animator.SetBool("isSweetPopy", false);
                 animator.SetBool("isBabyPopy", false);
                 animator.SetBool("isGangsterPopy", true);
                 break;          
         }
-
     }
-
     
+    void Update(){ // Schwierigkeit erhöhen
+        float maxGrav = startGravity + 1.3f;
+        float newGrav = startGravity + Score.getScore() * 0.0015f;
+        if(newGrav < maxGrav){
+            Debug.Log(newGrav);
+            Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
+        }
+    }    
 }
