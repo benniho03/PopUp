@@ -43,7 +43,6 @@ public class CharacterSpriteHandler : MonoBehaviour
         float maxGrav = startGravity + 1.3f;
         float newGrav = startGravity + Score.getScore() * 0.0015f;
         if(newGrav < maxGrav){
-            Debug.Log(newGrav);
             Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
         }
     }    
