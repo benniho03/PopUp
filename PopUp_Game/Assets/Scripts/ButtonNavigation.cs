@@ -27,4 +27,10 @@ public class ButtonNavigation : MonoBehaviour
     public void playGame(){
         Time.timeScale = 1;
     }
+    public void switchTutorialRight(){
+        SceneManager.LoadScene(sceneName:"tutorial2");
+    }
+    public void switchTutorialLeft(){
+        SceneManager.LoadScene(sceneName:"tutoria1");
+    }
 }
