@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
 
     public static int getScore()
     {
-        return Mathf.FloorToInt(player.transform.position.y/10);
+        return Mathf.FloorToInt(player.transform.position.y/10) + (Coins.coinCount * 10);
     }
 
     public static void setHighscore(int lastScore)
