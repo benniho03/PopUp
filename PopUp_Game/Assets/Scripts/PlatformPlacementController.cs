@@ -64,8 +64,6 @@ public class PlatformPlacementController : MonoBehaviour
             if(timeStamp <= Time.time)
             {
                 timeStamp = Time.time + cooldownTime;
-                Debug.Log(timeStamp);
-                Debug.Log(Time.time);
                 
                 PlatformPrefab = NextPlatformsArray[0];
                 NextPlatformsArray.RemoveAt(0);
