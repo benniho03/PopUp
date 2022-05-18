@@ -38,12 +38,15 @@ public class CharacterSpriteHandler : MonoBehaviour
                 break;          
         }
     }
-    
+
     void Update(){ // Schwierigkeit erhöhen
-        float maxGrav = startGravity + 1.3f;
-        float newGrav = startGravity + Score.getScore() * 0.0015f;
-        if(newGrav < maxGrav){
-            Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
-        }
+        /*if(!isDrinkItemActive){
+            float maxGrav = startGravity + 1.3f;
+            float newGrav = startGravity + Score.getScore() * 0.0015f;
+            if(newGrav < maxGrav){
+                Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
+            }
+        }*/
+        Player.GetComponent<Rigidbody2D>().gravityScale = startGravity;
     }    
 }
