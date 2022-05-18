@@ -13,7 +13,7 @@ public class NachoItem : MonoBehaviour
     public float timeStamp;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(gameObject.name == "greenNachoPowerUp"){
+        if(gameObject.tag == "greenNacho"){
             scalePlatfroms(bigScale);
         } else{
             scalePlatfroms(smallScale);
