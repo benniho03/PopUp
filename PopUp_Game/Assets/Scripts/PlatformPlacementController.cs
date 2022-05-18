@@ -25,17 +25,12 @@ public class PlatformPlacementController : MonoBehaviour
     private float timeStamp;
     public float cooldownTime;
 
-
-    [SerializeField]
-    GameObject[] PlatformArray = new GameObject[5];
     List<GameObject> NextPlatformsArray = new List<GameObject>();
-    // public Array PlatformArray = new Array [4];
     private GameObject PlatformPrefab;
 
     [SerializeField]
     private KeyCode newObjectHotkey = KeyCode.Mouse0;
     [SerializeField]
-    
     private GameObject currentPlatform;
     
     private void Start() {
@@ -56,20 +51,26 @@ public class PlatformPlacementController : MonoBehaviour
         HandleNewObjectHotkey();
     }
 
+    bool checkForClickInBounds(){
+        if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -13.5 && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 13.5){
+            return true;
+        } else {
+            return false;
+        }
+    }
     private void HandleNewObjectHotkey()
     {
        
-        if (Input.GetKeyDown(newObjectHotkey))
+        if (Input.GetKeyDown(newObjectHotkey) && timeStamp <= Time.time && checkForClickInBounds())
         {
-            if(timeStamp <= Time.time)
-            {
+
                 timeStamp = Time.time + cooldownTime;
                 
                 PlatformPrefab = NextPlatformsArray[0];
                 NextPlatformsArray.RemoveAt(0);
                 if (NextPlatformsArray.Count == 2) {
                     NextPlatformsArray.Add(getRandomPlatformType());
-                }            
+                }
 
                 buildPlatformPreview();
 
@@ -81,10 +82,9 @@ public class PlatformPlacementController : MonoBehaviour
                     currentPlatform.transform.position = mouseWorldPosition;
                 }
                 
-            }
+            
         }
     }
-
     private GameObject getRandomPlatformType()
     {
 
