@@ -36,4 +36,6 @@ public class ButtonNavigation : MonoBehaviour
     public void switchTutorialLeft(){
         SceneManager.LoadScene(sceneName:"tutoria1");
     }
+
+    
 }
