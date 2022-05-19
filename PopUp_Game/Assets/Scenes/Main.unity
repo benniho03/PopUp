@@ -10202,8 +10202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1955049739}
   duration: 5
-  increaseGravity: 10
-  decreaseGravity: 0.01
   normalGravity: 0
   timeStamp: 0
   isDrinkItemActive: 0
@@ -26451,6 +26449,8 @@ MonoBehaviour:
   - {fileID: 6153975360092836180}
   - {fileID: 6153975360092836180}
   - {fileID: 6153975360092836180}
+  - {fileID: 193765272}
+  - {fileID: 2001532581}
 --- !u!4 &1413397050
 Transform:
   m_ObjectHideFlags: 0
@@ -42376,8 +42376,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1955049739}
   duration: 5
-  increaseGravity: 10
-  decreaseGravity: 0.01
   normalGravity: 0
   timeStamp: 0
   isDrinkItemActive: 0
