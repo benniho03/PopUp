@@ -40,13 +40,10 @@ public class CharacterSpriteHandler : MonoBehaviour
     }
 
     void Update(){ // Schwierigkeit erhöhen
-        /*if(!isDrinkItemActive){
-            float maxGrav = startGravity + 1.3f;
-            float newGrav = startGravity + Score.getScore() * 0.0015f;
-            if(newGrav < maxGrav){
-                Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
-            }
-        }*/
-        Player.GetComponent<Rigidbody2D>().gravityScale = startGravity;
+        float maxGrav = startGravity + 1.5f;
+        float newGrav = startGravity + Player.transform.position.y * 0.0002f;
+        if(newGrav < maxGrav){
+            Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
+        }
     }    
 }
