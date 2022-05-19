@@ -9,6 +9,8 @@ TagManager:
   - redNacho
   - redDrink
   - greenDrink
+  - coin
+  - redCoin
   layers:
   - Default
   - TransparentFX
