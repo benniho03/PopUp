@@ -42,7 +42,7 @@ public class NachoItem : MonoBehaviour
     }
 
     private void hideItem(){
-        gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
