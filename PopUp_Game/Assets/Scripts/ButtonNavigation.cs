@@ -16,6 +16,7 @@ public class ButtonNavigation : MonoBehaviour
         Coins.coinCount = 0;
         Coins.redCoinCount = 0;
         Time.timeScale = 1;
+        CharacterSpriteHandler.gravityMultiplicator = 1f;
     }
     public void changeToSelectCharacterScreen(){
         SceneManager.LoadScene(sceneName:"selectCharacterScreen");

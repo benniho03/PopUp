@@ -6,24 +6,25 @@ public class DrinkItem : MonoBehaviour
 {
     public GameObject Player;
     public float duration = 5f;
-    public float increaseGravity = 2f;
-    public float decreaseGravity = 0.5f;
     public int normalGravity;
     public float timeStamp;
     public bool isDrinkItemActive = false;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(gameObject.tag == "greenDrink"){
-            setGravity(decreaseGravity);
+            setGravity(true);
         } else{
-            setGravity(increaseGravity);
+            setGravity(false);
         }
     }
 
-    private void setGravity(float gravity){
-        float newGravity = Player.GetComponent<Rigidbody2D>().gravityScale * gravity;
+    private void setGravity(bool gravity){
+        if(gravity){
+            CharacterSpriteHandler.gravityMultiplicator = 0.75f;   
+        } else{
+            CharacterSpriteHandler.gravityMultiplicator = 1.25f;  
+        }
         hideItem();
-        Player.GetComponent<Rigidbody2D>().gravityScale = 3;
         isDrinkItemActive = true; 
         setTimestamp();     
     }
@@ -33,7 +34,7 @@ public class DrinkItem : MonoBehaviour
     }
 
     private void resetGravity(){
-        Player.GetComponent<Rigidbody2D>().gravityScale = 1.5f;        
+        CharacterSpriteHandler.gravityMultiplicator = 1f;       
         isDrinkItemActive = false;
     }
 
@@ -46,8 +47,7 @@ public class DrinkItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Update() { 
-        Debug.Log(timeStamp);         
+    private void Update() {        
         if(isDrinkItemActive && (Time.time > timeStamp)){
             resetGravity();
             removeDrink(); 

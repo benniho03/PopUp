@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPlacer : MonoBehaviour
 {
-    public GameObject[] allItems = new GameObject[14];
+    public GameObject[] allItems = new GameObject[16];
     private System.Random rnd = new System.Random();
     private float timeStamp;
 
@@ -34,7 +34,7 @@ public class ItemPlacer : MonoBehaviour
     }
 
     private GameObject getRandomItem(){
-        int randomInt  = rnd.Next(0, 14);
+        int randomInt  = rnd.Next(0, 16);
         return allItems[randomInt];
     }
     private float getRandomX(){

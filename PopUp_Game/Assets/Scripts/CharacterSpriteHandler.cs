@@ -9,6 +9,7 @@ public class CharacterSpriteHandler : MonoBehaviour
     public Sprite sweetPopy;
     public Sprite gangsterPopy;
     public static int characterNr = 1;
+    public static float gravityMultiplicator = 1f;
     public float startGravity;
     public Animator animator;
     private bool devChanged = false;
@@ -42,10 +43,16 @@ public class CharacterSpriteHandler : MonoBehaviour
 
     void Update(){ // Schwierigkeit erhöhen
         float maxGrav = startGravity + 1.5f;
-        float newGrav = startGravity + Player.transform.position.y * 0.0002f;
-        if(newGrav < maxGrav){
+        float newGrav = (startGravity + Player.transform.position.y * 0.0002f) * gravityMultiplicator;
+        if(gravityMultiplicator != 1){
+            Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
+        } else if(newGrav < maxGrav){
             Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
         }
+        easterEgg();
+    }
+
+    private void easterEgg(){
         if (!devChanged && Score.getScore() > 499) {
             animator.SetBool("isDevPopy", true);
             System.Random rnd = new System.Random();
