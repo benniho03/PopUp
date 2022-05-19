@@ -32,8 +32,9 @@ public class PlatformPlacementController : MonoBehaviour
     private KeyCode newObjectHotkey = KeyCode.Mouse0;
     [SerializeField]
     private GameObject currentPlatform;
-    
-    private void Start() {
+
+    private void Start()
+    {
         NextPlatformsArray.Add(GameObject.Find("platform"));
         NextPlatformsArray.Add(getRandomPlatformType());
         NextPlatformsArray.Add(getRandomPlatformType());
@@ -51,44 +52,66 @@ public class PlatformPlacementController : MonoBehaviour
         HandleNewObjectHotkey();
     }
 
-    bool checkForClickInBounds(){
-        if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -13.5 && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 13.5){
+    bool checkForClickInBounds()
+    {
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -13.5 && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 13.5)
+        {
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
     private void HandleNewObjectHotkey()
     {
-       
-        if (Input.GetKeyDown(newObjectHotkey) && timeStamp <= Time.time && checkForClickInBounds())
+
+        if (Input.GetKeyDown(newObjectHotkey) && timeStamp <= Time.time) //Mausclick und Cooldown
         {
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            timeStamp = Time.time + cooldownTime;
 
-                timeStamp = Time.time + cooldownTime;
-                
-                PlatformPrefab = NextPlatformsArray[0];
-                NextPlatformsArray.RemoveAt(0);
-                if (NextPlatformsArray.Count == 2) {
-                    NextPlatformsArray.Add(getRandomPlatformType());
-                }
+            PlatformPrefab = NextPlatformsArray[0];
+            NextPlatformsArray.RemoveAt(0);
+            if (NextPlatformsArray.Count == 2)
+            {
+                NextPlatformsArray.Add(getRandomPlatformType());
+            }
 
-                buildPlatformPreview();
+            buildPlatformPreview();
 
-                currentPlatform = Instantiate(PlatformPrefab);
-                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mouseWorldPosition.z = 0f;
+            currentPlatform = Instantiate(PlatformPrefab);
+            mouseWorldPosition.z = 0f;
+
+            if (checkForClickInBounds()) // außerhalb von Spielfeld?
+            {
                 if (currentPlatform != null)
                 {
                     currentPlatform.transform.position = mouseWorldPosition;
                 }
-                
-            
+            }
+            else
+            {
+                if (currentPlatform != null)
+                {
+                    if (mouseWorldPosition.x < -14)
+                    {
+                        mouseWorldPosition.x = -13f;
+                    }
+                    else
+                    {
+                        mouseWorldPosition.x = 13f;
+                    }
+                    currentPlatform.transform.position = mouseWorldPosition;
+                }
+            }
         }
     }
     private GameObject getRandomPlatformType()
     {
 
-        switch(getRandomNumber()){
+        switch (getRandomNumber())
+        {
             case 0:
                 return GameObject.Find("platform");
             case 1:
@@ -110,23 +133,27 @@ public class PlatformPlacementController : MonoBehaviour
         }
     }
 
-    private void changePlatformType(String platformType){
+    private void changePlatformType(String platformType)
+    {
         // PlatformPrefab.setPlatformType("");
         // Debug.Log(PlatformPrefab.gameObject);
-    } 
+    }
 
-    private int getRandomNumber(){
+    private int getRandomNumber()
+    {
         // int randomInt = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, 4.0f));
         // Debug.Log(randomInt);
         System.Random rnd = new System.Random();
-        int randomInt  = rnd.Next(0, 8);
+        int randomInt = rnd.Next(0, 8);
         return randomInt;
     }
 
-    private void buildPlatformPreview(){
+    private void buildPlatformPreview()
+    {
         for (int i = 0; i <= 2; i++)
         {
-            switch (NextPlatformsArray[i].name){
+            switch (NextPlatformsArray[i].name)
+            {
                 case "platform":
                     prevs[i].sprite = platform;
                     break;
@@ -152,7 +179,7 @@ public class PlatformPlacementController : MonoBehaviour
                     prevs[i].sprite = platformCannon;
                     break;
             }
-            
+
         }
     }
 }
