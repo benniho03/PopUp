@@ -46,7 +46,7 @@ public class CharacterSpriteHandler : MonoBehaviour
         if(newGrav < maxGrav){
             Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
         }
-        if (!devChanged && Score.getScore() > 20) {
+        if (!devChanged && Score.getScore() > 499) {
             animator.SetBool("isDevPopy", true);
             System.Random rnd = new System.Random();
             int randomInt  = rnd.Next(0, 5);
