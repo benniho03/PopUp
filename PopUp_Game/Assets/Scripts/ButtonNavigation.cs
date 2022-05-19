@@ -13,6 +13,8 @@ public class ButtonNavigation : MonoBehaviour
     public void changeToGameScreen()
     {
         SceneManager.LoadScene(sceneName:"Main");
+        Coins.coinCount = 0;
+        Coins.redCoinCount = 0;
         Time.timeScale = 1;
     }
     public void changeToSelectCharacterScreen(){
