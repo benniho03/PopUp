@@ -54,7 +54,7 @@ public class PlatformPlacementController : MonoBehaviour
 
     bool checkForClickInBounds()
     {
-        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -14 && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 14)
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > -14 && (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 14 && Camera.main.ScreenToWorldPoint(Input.mousePosition).x < 16))
         {
             return true;
         }
@@ -94,15 +94,18 @@ public class PlatformPlacementController : MonoBehaviour
             {
                 if (currentPlatform != null)
                 {
-                    if (mouseWorldPosition.x > 14 && mouseWorldPosition.x < 15)
+                    if (mouseWorldPosition.x < -14)
+                    {
+                        mouseWorldPosition.x = -13f;
+                    }
+                    if (mouseWorldPosition.x > 14 && mouseWorldPosition.x < 16)
                     {
                         mouseWorldPosition.x = 13f;
                     }
-                    if(mouseWorldPosition.x < -14)
+                    else
                     {
-                        mouseWorldPosition.x = -13f;
-                    } else {
-                        mouseWorldPosition.x = 500f;
+                        Destroy(currentPlatform);
+                        return;
                     }
                     currentPlatform.transform.position = mouseWorldPosition;
                 }
