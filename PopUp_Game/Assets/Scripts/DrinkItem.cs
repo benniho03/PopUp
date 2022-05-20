@@ -20,9 +20,9 @@ public class DrinkItem : MonoBehaviour
 
     private void setGravity(bool gravity){
         if(gravity){
-            CharacterSpriteHandler.gravityMultiplicator = 0.75f;   
+            CharacterSpriteHandler.gravityMultiplicator = 0.5f;   
         } else{
-            CharacterSpriteHandler.gravityMultiplicator = 1.25f;  
+            CharacterSpriteHandler.gravityMultiplicator = 1.5f;  
         }
         hideItem();
         isDrinkItemActive = true; 

@@ -43,7 +43,7 @@ public class CharacterSpriteHandler : MonoBehaviour
 
     void Update(){ // Schwierigkeit erhöhen
         float maxGrav = startGravity + 1.5f;
-        float newGrav = (startGravity + Player.transform.position.y * 0.0002f) * gravityMultiplicator;
+        float newGrav = (startGravity + Player.transform.position.y * 0.0006f) * gravityMultiplicator;
         if(gravityMultiplicator != 1){
             Player.GetComponent<Rigidbody2D>().gravityScale = newGrav;
         } else if(newGrav < maxGrav){
